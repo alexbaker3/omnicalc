@@ -134,11 +134,13 @@ class CalculationsController < ApplicationController
 
     @variance = var
 
-def dev
-m=@mean
-p=@numbers.sum{|i| (i-m)**2} /@numbers.size
+    def dev
+      m=@mean
+      p=@numbers.sum{|i| (i-m)**2} /@numbers.size
+      Math.sqrt(p)
+    end
 
-    @standard_deviation = "Replace this string with your answer."
+    @standard_deviation = dev
 
     frequency = @numbers.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
 
